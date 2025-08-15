@@ -1,47 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Level X — Mad Professor Level‑1 Demo</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level X — Mad Professor Demo</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Game root -->
-  <div id="game-root"></div>
+  <div id="game-container">
+    <div id="loading-screen" class="screen active">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <h2>Loading Level X...</h2>
+      </div>
+    </div>
+    
+    <div id="start-screen" class="screen">
+      <div class="background-parallax"></div>
+      <div class="content">
+        <div class="characters">
+          <img id="tilly" src="assets/Tilly_transparent.png" alt="Tilly" class="character">
+          <img id="reku" src="assets/Reku_transparent.png" alt="Reku" class="character">
+          <img id="professor" src="assets/Mad_Professor_transparent.png" alt="Mad Professor" class="character">
+        </div>
+        <h1 class="game-title">Mad Professor<br><span class="level-text">Level X</span></h1>
+        <button id="start-btn" class="primary-button">Start Adventure</button>
+      </div>
+    </div>
 
-  <!-- Inline assets JSON fallback -->
-  <script type="application/json" id="assets">
-  {
-    "BG_TITLE":  "assets/start_screen_image1.png",
-    "TILLY":     "assets/Tilly_transparent.png",
-    "REKU":      "assets/Reku_transparent.png",
-    "PROF":      "assets/Mad_Professor_transparent.png",
-    "VIDEO_INTRO":"assets/intro_video_lab.mp4",
-    "RULES_0":   "assets/rules_of_the_game_image1.png",
-    "RULES_1":   "assets/rules_of_the_game_first_rule_image2.png",
-    "RULES_2":   "assets/rules_of_the_game_second_rule_image3.png",
-    "RULES_3":   "assets/rules_of_the_game_third_rule_next_button_image4.png",
-    "Q1":  "assets/15.png",
-    "Q2":  "assets/15_image_3.png",
-    "Q3":  "assets/15_image_4.png",
-    "Q4":  "assets/15_image_5.png",
-    "Q5":  "assets/15_image_6.png",
-    "Q6":  "assets/15_image_7.png",
-    "Q7":  "assets/15_image_8.png",
-    "Q8":  "assets/15_image_9.png",
-    "Q9":  "assets/15_image_10.png",
-    "Q10": "assets/15_image_11.png",
-    "CORRECT1":  "assets/16.png",
-    "AFTER":     "assets/35.png",
-    "CONGRATS":  "assets/37.png",
-    "AUDIO_LOOP":    "assets/loop.mp3",
-    "AUDIO_START":   "assets/start.wav",
-    "AUDIO_NEXT":    "assets/next.wav",
-    "AUDIO_CORRECT": "assets/correct.wav",
-    "AUDIO_WRONG":   "assets/wrong.wav"
-  }
-  </script>
-  <script src="main.js"></script>
+    <div id="intro-screen" class="screen">
+      <div class="content">
+        <div class="video-container">
+          <video id="intro-video" controls>
+            <source src="assets/intro_video_lab.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <button id="skip-intro" class="secondary-button">Skip Intro</button>
+      </div>
+    </div>
+
+    <div id="rules-screen" class="screen">
+      <div class="background-parallax"></div>
+      <div class="content">
+        <div class="rules-container">
+          <img id="rules-image" src="" alt="Rules" class="rules-image">
+          <div class="rules-navigation">
+            <button id="rules-prev" class="nav-button" disabled>Previous</button>
+            <span id="rules-counter">1 / 4</span>
+            <button id="rules-next" class="nav-button">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="quiz-screen" class="screen">
+      <div class="content">
+        <div class="quiz-header">
+          <div class="question-counter">
+            Question <span id="current-question">1</span> of <span id="total-questions">10</span>
+          </div>
+          <div class="timer-container">
+            <div class="timer-circle">
+              <span id="timer-text">20</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="question-container">
+          <img id="question-image" src="" alt="Question" class="question-image">
+        </div>
+        
+        <div class="answers-container">
+          <button id="answer-a" class="answer-button" data-answer="A">
+            <span class="answer-letter">A</span>
+          </button>
+          <button id="answer-b" class="answer-button" data-answer="B">
+            <span class="answer-letter">B</span>
+          </button>
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="celebration-screen" class="screen">
+      <div class="content">
+        <div class="celebration-content">
+          <img src="assets/16.png" alt="Correct!" class="celebration-image">
+          <h2 class="celebration-text">Correct #1!</h2>
+        </div>
+      </div>
+    </div>
+
+    <div id="results-screen" class="screen">
+      <div class="content">
+        <div class="results-container">
+          <img id="results-image" src="" alt="Results" class="results-image">
+          <div class="score-display">
+            <h2>Your Score</h2>
+            <div class="score-circle">
+              <span id="final-score">0</span>
+              <span class="score-total">/ 10</span>
+            </div>
+          </div>
+          <div class="results-buttons">
+            <button id="try-again-btn" class="primary-button">Try Again</button>
+            <button id="back-to-start-btn" class="secondary-button">Back to Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="confetti-container"></div>
+  </div>
+
+  <script src="js/audio-manager.js"></script>
+  <script src="js/animation-manager.js"></script>
+  <script src="js/game-state.js"></script>
+  <script src="js/screen-manager.js"></script>
+  <script src="js/quiz-manager.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

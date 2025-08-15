@@ -1,0 +1,12 @@
+This directory contains all the game assets.
+
+Required assets for the game to work properly:
+- Character images: Tilly_transparent.png, Reku_transparent.png, Mad_Professor_transparent.png
+- Background: start_screen_image1.png
+- Rules images: rules_of_the_game_image1.png, rules_of_the_game_first_rule_image2.png, rules_of_the_game_second_rule_image3.png, rules_of_the_game_third_rule_next_button_image4.png
+- Question images: 15.png, 15_image_3.png through 15_image_11.png
+- Special screens: 16.png (celebration), 35.png (after), 37.png (congrats)
+- Video: intro_video_lab.mp4
+- Audio: start.wav, next.wav, correct.wav, wrong.wav, loop.mp3
+
+The game will work with placeholder images if assets are missing, but for the full experience, copy the assets from the original repository.
