@@ -24,6 +24,12 @@ function ce(tag, opts={}) {
 }
 function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
 
+function safePlay(a){
+  if (!a) return;
+  const p = a.play();
+  if (p && typeof p.catch === 'function') p.catch(()=>{});
+}
+
 async function loadAssets() {
   let json = null;
   try {
@@ -55,7 +61,7 @@ async function loadAssets() {
 function playSFX(type) {
   if (audio[type]) {
     audio[type].currentTime = 0;
-    audio[type].play();
+    safePlay(audio[type]);
     return;
   }
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -399,7 +405,7 @@ function playLoopMusic(on) {
   if (audio.AUDIO_LOOP) {
     audio.AUDIO_LOOP.loop = true;
     audio.AUDIO_LOOP.volume = 0.38;
-    if (on) audio.AUDIO_LOOP.play();
+    if (on) safePlay(audio.AUDIO_LOOP);
     else audio.AUDIO_LOOP.pause();
   }
 }
