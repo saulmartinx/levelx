@@ -105,7 +105,8 @@ body {
   margin: 1em 0 0 0;
   font-weight: 600;
   cursor: pointer;
-  transition: background 220ms, color 220ms, transform 340ms cubic-bezier(.8,.2,.2,1), opacity 340ms;
+  transition: background 220ms, color 220ms,
+             transform 340ms cubic-bezier(.8,.2,.2,1), opacity 340ms;
 }
 
 .button:active, .choice-btn:active {
@@ -121,9 +122,6 @@ body {
 }
 
 .choice-btn {
-  min-width: 60px;
-  min-height: 46px;
-  font-size: 1.4em;
   border: 2px solid var(--accent);
   background: var(--button-bg);
   color: var(--accent);
