@@ -64,6 +64,9 @@ function playSFX(type) {
     safePlay(audio[type]);
     return;
   }
+  
+  // Fallback to WebAudio beeps if no audio file
+  try {
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
   let o1 = ctx.createOscillator(), g = ctx.createGain();
   o1.connect(g); g.connect(ctx.destination);
@@ -101,6 +104,9 @@ function playSFX(type) {
       break;
     case 'AUDIO_LOOP':
       break;
+  }
+  } catch(e) {
+    console.warn('Audio context failed:', e);
   }
 }
 
@@ -224,15 +230,34 @@ function renderIntroVideo() {
     src: assets.VIDEO_INTRO,
     width: 340,
     controls: false,
-    autoplay: true,
+    autoplay: false,
     tabIndex: 0,
     style: "border-radius:1.2em;box-shadow:0 2px 16px rgba(0,0,0,0.13);margin-bottom:1.2em;"
   });
+  
+  // Add play button and click handler for better browser compatibility
+  video.controls = true;
+  
   video.onended = () => {
     showScreen('RULES_0');
     playLoopMusic(true);
   };
+  
+  // Try to autoplay, but provide fallback
+  video.play().catch(() => {
+    console.log('Autoplay blocked, user must click play');
+  });
+  
   s.appendChild(video);
+  
+  // Add skip button
+  const skipBtn = ce('button', { className: 'button', textContent: 'Skip Video' });
+  skipBtn.onclick = () => {
+    showScreen('RULES_0');
+    playLoopMusic(true);
+  };
+  s.appendChild(skipBtn);
+  
   return s;
 }
 
