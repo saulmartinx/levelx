@@ -47,25 +47,25 @@ Safari.
   levelx_assets.json      # map of all assets (filenames OR data 
 URIs) 
   /assets/ 
-    start screen_image1.png 
+    start_screen_image1.png
     Tilly_transparent.png 
     Reku_transparent.png 
-    Mad Professor_transparent.png 
+    Mad_Professor_transparent.png
     intro_video_lab.mp4 
-    rules of the game_image 1.png 
-    rules of the game_first rule_image 2.png 
-    rules of the game_second rule_image 3.png 
-    rules of the game_third rule_next button_image 4.png 
+    rules_of_the_game_image1.png
+    rules_of_the_game_first_rule_image2.png
+    rules_of_the_game_second_rule_image3.png
+    rules_of_the_game_third_rule_next_button_image4.png
     15.png 
-    15_image (3).png 
-    15_image (4).png 
-    15_image (5).png 
-    15_image (6).png 
-    15_image (7).png 
-    15_image (8).png 
-    15_image (9).png 
-    15_image (10).png 
-    15_image (11).png 
+    15_image_3.png
+    15_image_4.png
+    15_image_5.png
+    15_image_6.png
+    15_image_7.png
+    15_image_8.png
+    15_image_9.png
+    15_image_10.png
+    15_image_11.png
     16.png                # Correct #1 celebration 
     35.png                # After screen 
     37.png                # Congrats screen 
