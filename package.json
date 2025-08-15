@@ -1,12 +1,6 @@
-{
-  "name": "project",
-  "version": "1.0.0",
-  "description": "Level X – Mad Professor Demo A fully playable Level‑1 web demo that runs offline in any modern browser (desktop + mobile). Flow: Start → Intro Video → Rules (4 slides) → Quiz (10 A/B questions, 20 s each) → After → Congrats/Retry. Answer key: A, B, A, A, B, B, A, B, B, B. Score ≥ 5 shows Congrats, otherwise Retry. The first correct answer displays a “Correct #1” card for ~1.5 s, then resumes.",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
+@@ .. @@
+   "scripts": {
+-    "test": "echo \"Error: no test specified\" && exit 1"
++    "test": "echo \"Error: no test specified\" && exit 1",
++    "start": "http-server . -p 8000 -c-1"
+   },
